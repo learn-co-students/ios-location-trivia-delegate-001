@@ -10,7 +10,7 @@
 		524069D271A6F880189DA812 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 024DC5DB2B96F9537F560B8C /* main.m */; };
 		7C1099A832C77CC206762875 /* libPods-unit_tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 874939C97F7C52405BA15493 /* libPods-unit_tests.a */; };
 		81216B382948A6AF38B1372F /* LaunchScreen.xib in Sources */ = {isa = PBXBuildFile; fileRef = C2DB6BE34FCFA347D5C300F2 /* LaunchScreen.xib */; };
-		ABCBEE36A2F87DFCC3AF1283 /* Main.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = DC4594DDF9C5FBA23430B169 /* Main.storyboard */; };
+		ABCBEE36A2F87DFCC3AF1283 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4594DDF9C5FBA23430B169 /* Main.storyboard */; };
 		AEAB81C7277B0058BC9C7162 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27409456CE94F00996D38DFB /* Foundation.framework */; };
 		BDCEE86C1B39C5C000207246 /* FISLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE86B1B39C5C000207246 /* FISLocationsViewController.m */; };
 		BDCEE86F1B39C5CB00207246 /* FISAddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE86E1B39C5CB00207246 /* FISAddLocationViewController.m */; };
@@ -265,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABCBEE36A2F87DFCC3AF1283 /* Main.storyboard in Resources */,
 				CA7F08C2F4E82DC85E023CAE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,7 +319,6 @@
 			files = (
 				E493E11106385251ABBE6C56 /* FISAppDelegate.m in Sources */,
 				BDCEE8721B39C5DE00207246 /* FISLocation.m in Sources */,
-				ABCBEE36A2F87DFCC3AF1283 /* Main.storyboard in Sources */,
 				81216B382948A6AF38B1372F /* LaunchScreen.xib in Sources */,
 				524069D271A6F880189DA812 /* main.m in Sources */,
 				BDCEE86F1B39C5CB00207246 /* FISAddLocationViewController.m in Sources */,
