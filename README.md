@@ -42,16 +42,16 @@ Your goal is to do the following:
     * A method that asks the delegate if the given location name is valid. This method should enforce that there are no duplicate location names.
     * A method that alerts the delegate that the user has confirmed their new location name.
     
-    Think about what you would name these methods for a bit. Naming delegate protocol methods is a tricky business -- it's usually best to follow Apple's lead where possible. I'd recommend these names for the methods above:
+    Think about what you would name these methods for a bit. [Naming delegate protocol methods](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/NamingMethods.html#//apple_ref/doc/uid/20001282-1001839-BCIEJEHH) is a tricky business -- it's usually best to follow Apple's lead where possible. I'd recommend these names for the methods above:
     
     * `-(void)addLocationViewControllerDidCancel:(FISAddLocationViewController *)viewController`
     * `-(BOOL)addLocationViewController:(FISAddLocationViewController *)viewController shouldAllowLocationNamed:(NSString *)locationName`
     * `-(void)addLocationViewController:(FISAddLocationViewController *)viewController didAddLocationNamed:(NSString *)locationName`
 
-2. Add a property of type `id<FISAddLocationViewControllerDelegate>` to `FISAddLocationViewController`. Call it `delegate`. For memory reasons we'll discuss later, delegate properties should almost always be `weak`.
+2. Add a property of type `id<FISAddLocationViewControllerDelegate>` to `FISAddLocationViewController`. Call it `delegate`. For memory reasons we'll discuss later, delegate properties should almost always be `weak`. The odd type `id<...>` means "an object of any type (i.e., `id`), as long as it conforms to the given protocol(s)."
 
 3. Have `FISAddLocationViewController` call the methods on the delegate when appropriate:
-    * When the user types in the text field, check if the location name is valid, and only enable the save button if it is.
+    * When the user types in the text field, check if the location name is valid, and only enable the save button if it is. (Remember: wire the "Editing Did Change" event of the field to an action method to run some code whenever the text of a field changes.)
     * If the user hits the "Cancel" or "Save" buttons, call the appropriate delegate methods.
 
     Note that it is standard for VCs like this to **not** dismiss themselves upon completion -- rather, that is the responsibility of the delegate. A VC cannot know for certain *how* it was presented (i.e., modally or on a navigation stack), so it is best to leave the details of that up to the presenting VC. Follow that convention in `FISAddLocationViewController` by not having it call any `dismiss...` or `pop...` methods.
@@ -72,3 +72,5 @@ Make the `... shouldAllowLocationNamed:` delegate method optional (defaulting to
 Make the keyboard pop up automatically in the name field when the Add Item VC appears.
 
 Make the return button on the keyboard do the right thing in the Add Item VC.
+
+Though it would be a little weird, try pushing the Add Location VC onto a navigation stack, rather than presenting it modally. Think about what needs to change in your delegate implementation. But, you shouldn't have to change any code in the Add Location VC itself. Nice!
