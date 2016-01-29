@@ -75,4 +75,4 @@ Make the return button on the keyboard do the right thing in the Add Item VC.
 
 Though it would be a little weird, try pushing the Add Location VC onto a navigation stack, rather than presenting it modally. Think about what needs to change in your delegate implementation. But, you shouldn't have to change any code in the Add Location VC itself. Nice!
 
-<a href='https://learn.co/lessons/ios-location-trivia-delegate' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/ios-location-trivia-delegate' title='Location Trivia Delegates'>Location Trivia Delegates</a> on Learn.co and start learning to code for free.</p>
