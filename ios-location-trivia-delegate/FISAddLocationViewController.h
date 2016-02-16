@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FISAddLocationViewController : UIViewController
+@class FISAddLocationViewController;
 
+@protocol FISAddLocationViewControllerDelegate <NSObject>
+- (void)addLocationViewControllerDidCancel:(FISAddLocationViewController *)viewController;
+- (void)addLocationViewController:(FISAddLocationViewController *)viewController shouldAllowLocationNamed:(NSString *)locationName;
+- (void)addLocationViewController:(FISAddLocationViewController *)viewController didAddLocationNamed:(NSString *)locationName;
+@end
+
+@interface FISAddLocationViewController : UIViewController
+@property (nonatomic, weak) id <FISAddLocationViewControllerDelegate> delegate;
 @end
