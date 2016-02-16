@@ -8,7 +8,7 @@
 
 #import "FISAddLocationViewController.h"
 
-@interface FISAddLocationViewController ()
+@interface FISAddLocationViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 
@@ -23,15 +23,22 @@
 
 -(IBAction)cancelButtonTapped:(id)sender
 {
+    [self.delegate addLocationViewControllerDidCancel:self];
 }
 
 -(IBAction)saveButtonTapped:(id)sender
 {
+    [self.delegate addLocationViewController:self didAddLocationNamed:self.nameField.text];
 }
 
 -(BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (IBAction)textFieldWasEdited:(UITextField *)textField
+{
+    [self.navigationItem.rightBarButtonItem setEnabled:[self.delegate addLocationViewController:self shouldAllowLocationNamed:textField.text]];
 }
 
 @end
