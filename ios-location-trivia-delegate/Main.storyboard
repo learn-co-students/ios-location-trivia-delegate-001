@@ -44,9 +44,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Locations" id="gIf-IP-liv">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="vAN-z8-Ecb"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="UhH-oj-Nwi">
                             <connections>
-                                <segue destination="eFU-jz-aJ7" kind="modal" id="Be7-Qa-18I"/>
+                                <segue destination="eFU-jz-aJ7" kind="push" id="Be7-Qa-18I"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -55,7 +56,7 @@
             </objects>
             <point key="canvasLocation" x="478" y="398"/>
         </scene>
-        <!--Add Location View Controller-->
+        <!--Add Location-->
         <scene sceneID="l5X-w1-jw9">
             <objects>
                 <viewController id="eFU-jz-aJ7" customClass="FISAddLocationViewController" sceneMemberID="viewController">
@@ -67,23 +68,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zok-YI-efu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Add Location" id="TOd-cq-WVH">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TTt-SV-oO4">
-                                            <connections>
-                                                <action selector="cancelButtonTapped:" destination="eFU-jz-aJ7" id="M6G-bE-pEg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="pC6-mY-8mB">
-                                            <connections>
-                                                <action selector="saveButtonTapped:" destination="eFU-jz-aJ7" id="pDO-hZ-qWQ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fg4-su-5Ja">
                                 <rect key="frame" x="16" y="83" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -96,6 +80,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Location" id="TOd-cq-WVH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="pC6-mY-8mB">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="eFU-jz-aJ7" id="pDO-hZ-qWQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nameField" destination="fg4-su-5Ja" id="KzX-fv-JRL"/>
                         <outlet property="saveButton" destination="pC6-mY-8mB" id="2cC-mr-4Iu"/>

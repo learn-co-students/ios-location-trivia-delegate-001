@@ -24,10 +24,17 @@
     [self.saveButton setEnabled:NO];
 }
 
--(IBAction)cancelButtonTapped:(id)sender
+- (void)viewWillAppear:(BOOL)animated
 {
-    [self.delegate addLocationViewControllerDidCancel:self];
+    [super viewWillAppear:animated];
+    
+    [self.nameField becomeFirstResponder];
 }
+
+//-(IBAction)cancelButtonTapped:(id)sender
+//{
+//    [self.delegate addLocationViewControllerDidCancel:self];
+//}
 
 -(IBAction)saveButtonTapped:(id)sender
 {
@@ -41,7 +48,17 @@
 
 - (IBAction)textFieldWasEdited:(UITextField *)textField
 {
-    [self.saveButton setEnabled:[self.delegate addLocationViewController:self shouldAllowLocationNamed:textField.text]];
+    [self.saveButton setEnabled:(self.delegate ? [self.delegate addLocationViewController:self shouldAllowLocationNamed:textField.text] : YES)];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (self.delegate ? [self.delegate addLocationViewController:self shouldAllowLocationNamed:textField.text] : YES)
+    {
+        [self.delegate addLocationViewController:self didAddLocationNamed:self.nameField.text];
+    }
+    
+    return NO;
 }
 
 @end

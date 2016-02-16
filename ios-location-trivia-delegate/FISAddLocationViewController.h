@@ -11,9 +11,10 @@
 @class FISAddLocationViewController;
 
 @protocol FISAddLocationViewControllerDelegate <NSObject>
-- (void)addLocationViewControllerDidCancel:(FISAddLocationViewController *)viewController;
-- (BOOL)addLocationViewController:(FISAddLocationViewController *)viewController shouldAllowLocationNamed:(NSString *)locationName;
+//- (void)addLocationViewControllerDidCancel:(FISAddLocationViewController *)viewController;
 - (void)addLocationViewController:(FISAddLocationViewController *)viewController didAddLocationNamed:(NSString *)locationName;
+@optional
+- (BOOL)addLocationViewController:(FISAddLocationViewController *)viewController shouldAllowLocationNamed:(NSString *)locationName;
 @end
 
 @interface FISAddLocationViewController : UIViewController

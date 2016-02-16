@@ -63,10 +63,10 @@
     [(FISAddLocationViewController *)segue.destinationViewController setDelegate:self];
 }
 
-- (void)addLocationViewControllerDidCancel:(FISAddLocationViewController *)viewController
-{
-    [viewController dismissViewControllerAnimated:YES completion:nil];
-}
+//- (void)addLocationViewControllerDidCancel:(FISAddLocationViewController *)viewController
+//{
+//    [viewController dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (BOOL)addLocationViewController:(FISAddLocationViewController *)viewController shouldAllowLocationNamed:(NSString *)locationName
 {
@@ -77,9 +77,11 @@
 {
     FISLocation *location = [[FISLocation alloc] initWithName:locationName trivia:@[]];
     [self.triviaLocations addObject:location];
-    [viewController dismissViewControllerAnimated:YES completion:^{
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.triviaLocations.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-    }];
+//    [viewController dismissViewControllerAnimated:YES completion:^{
+//        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.triviaLocations.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+//    }];
+    [viewController.navigationController popViewControllerAnimated:YES];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.triviaLocations.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 @end
