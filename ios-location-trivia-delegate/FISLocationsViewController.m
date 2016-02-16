@@ -8,8 +8,9 @@
 
 #import "FISLocationsViewController.h"
 #import "FISLocation.h"
+#import "FISAddLocationViewController.h"
 
-@interface FISLocationsViewController ()
+@interface FISLocationsViewController () <FISAddLocationViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *triviaLocations;
 
@@ -57,7 +58,28 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if (![segue.destinationViewController isKindOfClass:[FISAddLocationViewController class]]) return;
     
+    [(FISAddLocationViewController *)segue.destinationViewController setDelegate:self];
+}
+
+- (void)addLocationViewControllerDidCancel:(FISAddLocationViewController *)viewController
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (BOOL)addLocationViewController:(FISAddLocationViewController *)viewController shouldAllowLocationNamed:(NSString *)locationName
+{
+    return (![self.triviaLocations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", NSStringFromSelector(@selector(name)), locationName]].count);
+}
+
+- (void)addLocationViewController:(FISAddLocationViewController *)viewController didAddLocationNamed:(NSString *)locationName
+{
+    FISLocation *location = [[FISLocation alloc] initWithName:locationName trivia:@[]];
+    [self.triviaLocations addObject:location];
+    [viewController dismissViewControllerAnimated:YES completion:^{
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.triviaLocations.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    }];
 }
 
 @end

@@ -89,7 +89,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textFieldWasEdited:" destination="eFU-jz-aJ7" eventType="valueChanged" id="FMa-CB-p0O"/>
+                                    <action selector="textFieldWasEdited:" destination="eFU-jz-aJ7" eventType="editingChanged" id="mWh-0K-7pZ"/>
                                     <outlet property="delegate" destination="eFU-jz-aJ7" id="lEa-gr-js6"/>
                                 </connections>
                             </textField>
@@ -98,6 +98,7 @@
                     </view>
                     <connections>
                         <outlet property="nameField" destination="fg4-su-5Ja" id="KzX-fv-JRL"/>
+                        <outlet property="saveButton" destination="pC6-mY-8mB" id="2cC-mr-4Iu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNJ-0G-UKO" userLabel="First Responder" sceneMemberID="firstResponder"/>

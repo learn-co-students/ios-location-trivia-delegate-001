@@ -10,6 +10,7 @@
 
 @interface FISAddLocationViewController () <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 
 @end
@@ -19,6 +20,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.saveButton setEnabled:NO];
 }
 
 -(IBAction)cancelButtonTapped:(id)sender
@@ -38,7 +41,7 @@
 
 - (IBAction)textFieldWasEdited:(UITextField *)textField
 {
-    [self.navigationItem.rightBarButtonItem setEnabled:[self.delegate addLocationViewController:self shouldAllowLocationNamed:textField.text]];
+    [self.saveButton setEnabled:[self.delegate addLocationViewController:self shouldAllowLocationNamed:textField.text]];
 }
 
 @end
